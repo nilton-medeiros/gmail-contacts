@@ -1,5 +1,4 @@
-# from flask import Flask
-# from flask_restplus import Api
+from flask_restplus import Resource
 
 import firebase_admin
 from firebase_admin import credentials
@@ -12,12 +11,14 @@ app, api = server.app, server.api
 cred = credentials.Certificate(".env/Key.json")
 firebase_admin.initialize_app(cred)
 
+
 # https://firebase.google.com/docs/firestore/quickstart?hl=pt-br
-gmail_users_db = firestore.gmailusers()
 
 @api.route('/gmailusers')
 class GmailusersList(Resource):
     def get(self, ):
+        gmail_users_db = firestore.gmailusers()
+
         return gmail_users_db
 
     def post(self, ):
