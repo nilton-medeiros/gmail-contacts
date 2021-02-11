@@ -8,7 +8,7 @@ from src.server.instance import server
 
 app, api = server.app, server.api
 
-cred = credentials.Certificate(".env/Key.json")
+cred = credentials.Certificate("config/Key.json")
 firebase_admin.initialize_app(cred)
 
 
